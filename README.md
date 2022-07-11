@@ -9,6 +9,8 @@
 5. docker run --rm -it --name vma -v $PWD/out:/out vma
 6. use `vma` utility inside the container
 
-To convert vma images inside the container:
+To convert vma images to qcow2 inside the container:
 1. cd /out
 2. vma extract <FILENAME>.vma <DEST_FOLDER>
+3. stop the container and return to the host OS
+4. qemu-img convert -f raw -O qcow2 out/<DEST_FOLDER>/disk-drive-scsi0.raw out/<DEST_FOLDER>/final-image.qcow2
